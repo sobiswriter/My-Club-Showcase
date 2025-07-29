@@ -80,23 +80,14 @@
   }
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+#lights {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
 }
 
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 20px 5px hsla(var(--primary), 0.4);
-  }
-  50% {
-    box-shadow: 0 0 30px 10px hsla(var(--primary), 0.6);
-  }
+#lights > canvas {
+  width: 100%;
+  height: 100%;
 }

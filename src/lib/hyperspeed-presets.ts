@@ -1,7 +1,5 @@
 export const hyperspeedPresets = {
   one: {
-    onSpeedUp: () => { },
-    onSlowDown: () => { },
     distortion: 'turbulentDistortion',
     length: 400,
     roadWidth: 10,
@@ -37,8 +35,6 @@ export const hyperspeedPresets = {
     }
   },
   two: {
-    onSpeedUp: () => { },
-    onSlowDown: () => { },
     distortion: 'mountainDistortion',
     length: 400,
     roadWidth: 9,
@@ -75,8 +71,6 @@ export const hyperspeedPresets = {
     }
   },
   three: {
-    onSpeedUp: () => { },
-    onSlowDown: () => { },
     distortion: 'xyDistortion',
     length: 400,
     roadWidth: 9,
@@ -112,8 +106,6 @@ export const hyperspeedPresets = {
     }
   },
   four: {
-    onSpeedUp: () => { },
-    onSlowDown: () => { },
     distortion: 'LongRaceDistortion',
     length: 400,
     roadWidth: 10,
@@ -149,8 +141,6 @@ export const hyperspeedPresets = {
     }
   },
   five: {
-    onSpeedUp: () => { },
-    onSlowDown: () => { },
     distortion: 'turbulentDistortion',
     length: 400,
     roadWidth: 9,
@@ -186,8 +176,6 @@ export const hyperspeedPresets = {
     }
   },
   six: {
-    onSpeedUp: () => { },
-    onSlowDown: () => { },
     distortion: 'deepDistortion',
     length: 400,
     roadWidth: 18,

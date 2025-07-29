@@ -16,7 +16,6 @@ import { Separator } from '@/components/ui/separator';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import React from 'react';
-import { cn } from '@/lib/utils';
 
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   return (
@@ -64,13 +63,15 @@ function ProjectGallery() {
     const scrollSnap = api.scrollSnapList();
     
     const getTweenValues = (): number[] => {
-      const values: number[] = [];
-      for (const snap of scrollSnap) {
-        const diffToTarget = snap - engine.location.get();
-        const tweenValue = 1 - Math.abs(diffToTarget / 100);
-        values.push(numberWithinRange(tweenValue, 0, 1));
-      }
-      return values;
+        const values: number[] = [];
+        const scrollProgress = engine.scrollProgress.get();
+
+        for (let i = 0; i < scrollSnap.length; i++) {
+            const diffToTarget = scrollSnap[i] - scrollProgress;
+            const tweenValue = 1 - Math.abs(diffToTarget);
+            values.push(numberWithinRange(tweenValue, 0, 1));
+        }
+        return values;
     };
     setTweenValues(getTweenValues());
   }, []);

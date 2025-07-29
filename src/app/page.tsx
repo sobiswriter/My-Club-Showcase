@@ -19,11 +19,16 @@ export default function HomePage() {
             <TextType 
               as="h1"
               className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl mt-4"
-              text={["A Hub for Creative Developers"]}
+              text={[
+                "A Hub for Creative Developers",
+                "We Teach, We Create, We Build Together",
+                "Join our Project Group for Active Participation on Events",
+                "We look forward to Meeting you All :)",
+              ]}
               typingSpeed={75}
               pauseDuration={1500}
               showCursor={true}
-              loop={false}
+              loop={true}
               cursorCharacter="|"
             />
           <p className="mt-6 text-lg leading-8 text-muted-foreground">

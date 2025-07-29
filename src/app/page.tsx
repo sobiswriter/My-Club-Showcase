@@ -22,7 +22,6 @@ export default function HomePage() {
               text={[
                 "A Hub for Creative Developers",
                 "We Teach, We Create, We Build Together",
-                "Join our Project Group for Active Participation on Events",
                 "We look forward to Meeting you All :)",
               ]}
               typingSpeed={100}

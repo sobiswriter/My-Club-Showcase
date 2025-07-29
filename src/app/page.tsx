@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { MoveRight } from 'lucide-react';
 import Hyperspeed from '@/components/hyperspeed';
 import { hyperspeedPresets } from '@/lib/hyperspeed-presets';
+import TextType from '@/components/text-type';
 
 export default function HomePage() {
   return (
@@ -15,9 +16,16 @@ export default function HomePage() {
            <p className="text-lg font-bold tracking-tight text-foreground sm:text-xl">
             Click & hold to see the real magic of hyperspeed!
           </p>
-          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl mt-4">
-            A Hub for Creative Developers
-          </h1>
+            <TextType 
+              as="h1"
+              className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl mt-4"
+              text={["A Hub for Creative Developers"]}
+              typingSpeed={75}
+              pauseDuration={1500}
+              showCursor={true}
+              loop={false}
+              cursorCharacter="|"
+            />
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
             Showcasing the innovative projects and talented members of Team7. Explore our work, join our events, and become part of the community.
           </p>

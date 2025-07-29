@@ -9,6 +9,8 @@ export const projects = [
     forks: 12,
     status: 'Public',
     updatedAt: '2 hours ago',
+    imageUrl: 'https://placehold.co/600x400.png',
+    dataAiHint: 'website user interface'
   },
   {
     id: 2,
@@ -20,6 +22,8 @@ export const projects = [
     forks: 45,
     status: 'Public',
     updatedAt: 'on 24 May',
+    imageUrl: 'https://placehold.co/600x400.png',
+    dataAiHint: 'algorithm visualization'
   },
   {
     id: 3,
@@ -31,6 +35,8 @@ export const projects = [
     forks: 5,
     status: 'Public',
     updatedAt: 'on 20 May',
+    imageUrl: 'https://placehold.co/600x400.png',
+    dataAiHint: 'code api'
   },
   {
     id: 4,
@@ -42,6 +48,8 @@ export const projects = [
     forks: 22,
     status: 'In Progress',
     updatedAt: 'on 18 May',
+    imageUrl: 'https://placehold.co/600x400.png',
+    dataAiHint: 'mobile app'
   },
 ];
 

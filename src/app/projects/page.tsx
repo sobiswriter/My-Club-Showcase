@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Book, Star, GitFork, History } from 'lucide-react';
+import Image from 'next/image';
+import { Book, Star, GitFork } from 'lucide-react';
 import { projects } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -11,6 +12,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
+import { Card, CardContent } from '@/components/ui/card';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   return (
@@ -42,10 +45,55 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   );
 }
 
+function ProjectGallery() {
+  return (
+    <div className="mb-12">
+      <h2 className="text-2xl font-bold mb-4">Featured Projects</h2>
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        className="w-full"
+      >
+        <CarouselContent>
+          {projects.map((project) => (
+            <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3">
+              <div className="p-1">
+                <Card>
+                  <CardContent className="flex flex-col aspect-square items-start justify-between p-4">
+                    <Image
+                      src={project.imageUrl}
+                      alt={project.name}
+                      width={600}
+                      height={400}
+                      className="rounded-md object-cover w-full h-3/5"
+                      data-ai-hint={project.dataAiHint}
+                    />
+                    <div className="mt-4 flex-1">
+                      <h3 className="text-lg font-semibold text-primary">{project.name}</h3>
+                      <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{project.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="hidden sm:flex" />
+        <CarouselNext className="hidden sm:flex" />
+      </Carousel>
+    </div>
+  );
+}
+
 
 export default function ProjectsPage() {
   return (
     <div className="container max-w-5xl py-8">
+
+      <ProjectGallery />
+
       <div className="mb-4">
         <div className="flex flex-col gap-4 md:flex-row">
           <Input placeholder="Find a project..." className="flex-1" />
@@ -87,7 +135,7 @@ export default function ProjectsPage() {
       
       <div className="border rounded-md bg-card text-card-foreground">
         <div className="p-4">
-          <h2 className="text-xl font-semibold">Projects ({projects.length})</h2>
+          <h2 className="text-xl font-semibold">All Projects ({projects.length})</h2>
         </div>
         <Separator />
         <div>

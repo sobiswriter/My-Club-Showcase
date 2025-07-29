@@ -503,13 +503,11 @@ const Hyperspeed = ({ effectOptions = {
       }
 
       onMouseDown(ev) {
-        if (this.options.onSpeedUp) this.options.onSpeedUp(ev);
         this.fovTarget = this.options.fovSpeedUp;
         this.speedUpTarget = this.options.speedUp;
       }
 
       onMouseUp(ev) {
-        if (this.options.onSlowDown) this.options.onSlowDown(ev);
         this.fovTarget = this.options.fov;
         this.speedUpTarget = 0;
       }

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Github } from 'lucide-react';
+import { Github, Star } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
@@ -8,7 +8,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { Separator } from './ui/separator';
 
 const navItems = [
-  { name: 'Projects', href: '/' },
+  { name: 'Projects', href: '/projects' },
   { name: 'Members', href: '/members' },
   { name: 'Events', href: '/events' },
   { name: 'Blog', href: '/blog' },
@@ -17,7 +17,7 @@ const navItems = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-card">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center max-w-5xl">
         <div className="mr-4 flex items-center">
           <Link href="/" className="mr-6 flex items-center space-x-2">
@@ -37,8 +37,10 @@ export function Header() {
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
-            <Button asChild>
-                <Link href="/join">Join Us</Link>
+            <Button asChild variant="outline" size="sm">
+                <Link href="#">
+                    <Star className="mr-2 h-4 w-4" /> Star on GitHub
+                </Link>
             </Button>
             <ThemeToggle />
         </div>

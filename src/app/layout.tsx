@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={cn('min-h-screen bg-background font-body antialiased')}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           storageKey="devclub-theme"
         >
           <div className="relative flex min-h-screen flex-col">

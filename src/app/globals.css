@@ -118,8 +118,3 @@
   width: 100%;
   height: 100%;
 }
-
-.embla-3d {
-  perspective: 800px;
-  perspective-origin: center;
-}

@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link';
 import Image from 'next/image';
-import { Book, Star, GitFork } from 'lucide-react';
+import { Book, Star, GitFork, ArrowRight } from 'lucide-react';
 import { projects } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -14,7 +14,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Card, CardContent } from '@/components/ui/card';
-import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import React from 'react';
 
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
@@ -47,91 +47,52 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   );
 }
 
-const TWEEN_FACTOR = 4.2;
-
-const numberWithinRange = (number: number, min: number, max: number): number =>
-  Math.min(Math.max(number, min), max);
 
 function ProjectGallery() {
-  const [api, setApi] = React.useState<CarouselApi>()
-  const [tweenValues, setTweenValues] = React.useState<number[]>([])
-
-  const onSelect = React.useCallback((api: CarouselApi) => {
-    if (!api) return;
-    
-    const engine = api.internalEngine();
-    const scrollSnap = api.scrollSnapList();
-    
-    const getTweenValues = (): number[] => {
-        const values: number[] = [];
-        const scrollProgress = engine.scrollProgress.get();
-
-        for (let i = 0; i < scrollSnap.length; i++) {
-            const diffToTarget = scrollSnap[i] - scrollProgress;
-            const tweenValue = 1 - Math.abs(diffToTarget);
-            values.push(numberWithinRange(tweenValue, 0, 1));
-        }
-        return values;
-    };
-    setTweenValues(getTweenValues());
-  }, []);
-
-  React.useEffect(() => {
-    if (!api) return
-    onSelect(api)
-    api.on('select', onSelect)
-    api.on('scroll', onSelect)
-    return () => {
-      api.off('select', onSelect)
-    }
-  }, [api, onSelect])
-
   return (
     <div className="mb-12">
       <h2 className="text-2xl font-bold mb-4">Featured Projects</h2>
-      <div className="embla-3d">
-        <Carousel
-          setApi={setApi}
-          opts={{
-            align: "center",
-            containScroll: 'trimSnaps'
-          }}
-          className="w-full"
-        >
-          <CarouselContent>
-            {projects.map((project, index) => {
-              const tweenStyle = tweenValues[index] ? {
-                transform: `scale(${1 - 0.2 * (1 - tweenValues[index])}) rotateY(${-15 * (1 - tweenValues[index]) * Math.sign(index - (api?.selectedScrollSnap() || 0))}deg)`,
-                opacity: 0.5 + 0.5 * tweenValues[index]
-              } : {};
-
-              return(
-              <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3 transition-transform duration-500 ease-out">
-                <div className="p-1 h-full" style={{...tweenStyle, transformStyle: 'preserve-3d'}}>
-                  <Card className='h-full'>
-                    <CardContent className="flex flex-col aspect-video items-start justify-between p-4 h-full">
-                      <Image
-                        src={project.imageUrl}
-                        alt={project.name}
-                        width={600}
-                        height={400}
-                        className="rounded-md object-cover w-full h-3/5"
-                        data-ai-hint={project.dataAiHint}
-                      />
-                      <div className="mt-4 flex-1">
-                        <h3 className="text-lg font-semibold text-primary">{project.name}</h3>
-                        <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{project.description}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
-            )})}
-          </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex" />
-          <CarouselNext className="hidden sm:flex" />
-        </Carousel>
-      </div>
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        className="w-full"
+      >
+        <CarouselContent>
+          {projects.map((project, index) => (
+            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+              <div className="p-1">
+                <Card className="overflow-hidden group">
+                  <CardContent className="p-0 relative">
+                    <div className="absolute inset-0 bg-black/50 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                       <Button asChild variant="secondary" className="group-hover:animate-in group-hover:fade-in group-hover:zoom-in-90 duration-500">
+                          <Link href="#">
+                            View Project <ArrowRight className="ml-2 h-4 w-4" />
+                          </Link>
+                       </Button>
+                    </div>
+                    <Image
+                      src={project.imageUrl}
+                      alt={project.name}
+                      width={600}
+                      height={400}
+                      className="object-cover w-full h-[250px] group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                      data-ai-hint={project.dataAiHint}
+                    />
+                  </CardContent>
+                </Card>
+                 <div className="mt-4">
+                    <h3 className="text-lg font-semibold text-primary">{project.name}</h3>
+                    <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{project.description}</p>
+                  </div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="hidden sm:flex" />
+        <CarouselNext className="hidden sm:flex" />
+      </Carousel>
     </div>
   );
 }

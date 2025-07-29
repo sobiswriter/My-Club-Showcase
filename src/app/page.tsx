@@ -34,14 +34,16 @@ export default function HomePage() {
             Showcasing the innovative projects and talented members of Team7. Explore our work, join our events, and become part of the community.
           </p>
           <div className="mt-10 flex items-center justify-center lg:justify-start gap-x-6">
-            <Button asChild size="lg" className="shadow-lg shadow-primary/20 animate-glow">
+            <Button asChild size="lg" className="group shadow-lg shadow-primary/20 animate-glow transition-transform hover:scale-105 hover:shadow-primary/40">
               <Link href="/projects">
                 Explore Projects
-                <MoveRight className="ml-2" />
+                <MoveRight className="ml-2 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
-            <Button asChild variant="link" size="lg" className="text-foreground transition-transform hover:translate-y-[-2px]">
-              <Link href="/about">Learn more <span aria-hidden="true">→</span></Link>
+            <Button asChild variant="link" size="lg" className="text-foreground group">
+              <Link href="/about">
+                Learn more <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+              </Link>
             </Button>
           </div>
         </div>

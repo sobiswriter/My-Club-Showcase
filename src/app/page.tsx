@@ -11,7 +11,7 @@ export default function HomePage() {
             A Hub for Creative Developers
           </h1>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            Showcasing the innovative projects and talented members of the Developer&apos;s Club. Explore our work, join our events, and become part of the community.
+            Showcasing the innovative projects and talented members of Team7. Explore our work, join our events, and become part of the community.
           </p>
           <div className="mt-10 flex items-center gap-x-6">
             <Button asChild size="lg" className="shadow-lg shadow-primary/20">

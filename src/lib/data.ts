@@ -1,7 +1,7 @@
 export const projects = [
   {
     id: 1,
-    name: 'devclub-showcase',
+    name: 'team7-showcase',
     description: 'The very website you are looking at. A digital hub for our club.',
     language: 'TypeScript',
     languageColor: 'bg-blue-500',

@@ -6,7 +6,7 @@ import { Header } from '@/components/header';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'DevClub GH Showcase',
+  title: 'Team7 Showcase',
   description: 'A showcase of our club projects and members, inspired by GitHub.',
 };
 

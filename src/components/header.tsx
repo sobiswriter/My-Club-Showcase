@@ -21,16 +21,9 @@ function Team7Icon(props: React.SVGProps<SVGSVGElement>) {
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      fill="currentColor"
     >
-      <path d="M5.5 8.5h3" />
-      <path d="M7 8.5V6" />
-      <path d="M15.5 13.5h3" />
-      <path d="M17 13.5V6l-5 11" />
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 15h-3v-2.5h3V17zm0-4.5h-3V10h3v2.5zm0-4.5h-3V5.5h3V8zm6 9h-3v-2.5h3V17zm0-4.5h-3V10h3v2.5z" />
     </svg>
   );
 }

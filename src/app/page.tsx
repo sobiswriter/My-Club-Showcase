@@ -25,7 +25,7 @@ export default function HomePage() {
                 "Join our Project Group for Active Participation on Events",
                 "We look forward to Meeting you All :)",
               ]}
-              typingSpeed={75}
+              typingSpeed={100}
               pauseDuration={1500}
               showCursor={true}
               loop={true}

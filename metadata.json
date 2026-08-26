@@ -1,0 +1,6 @@
+{
+  "name": "Team7 Showcase",
+  "description": "A showcase of our club projects and members, inspired by GitHub.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -498,6 +498,8 @@ const Hyperspeed = ({ effectOptions = {
         this.container.addEventListener("mousedown", this.onMouseDown);
         this.container.addEventListener("mouseup", this.onMouseUp);
         this.container.addEventListener("mouseout", this.onMouseUp);
+        this.container.addEventListener("touchstart", this.onMouseDown, { passive: true });
+        this.container.addEventListener("touchend", this.onMouseUp, { passive: true });
 
         this.tick();
       }

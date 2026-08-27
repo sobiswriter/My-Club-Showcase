@@ -40,6 +40,10 @@ next-env.d.ts
 .genkit/*
 .env*
 
+# lockfiles to ignore
+bun.lock
+bun.lockb
+
 # firebase
 firebase-debug.log
 firestore-debug.log

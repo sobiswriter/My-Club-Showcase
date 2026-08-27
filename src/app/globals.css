@@ -1,8 +1,8 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   :root {
@@ -36,6 +36,28 @@
     --github-purple: #a371f7;
   }
 
+  .light {
+    --background: 0 0% 98%; /* #fafafa */
+    --foreground: 220 14% 10%; /* #1a1e24 */
+    --card: 0 0% 100%;
+    --card-foreground: 220 14% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 14% 10%;
+    --primary: 212 92% 43%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 94%;
+    --secondary-foreground: 220 14% 10%;
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 16% 40%;
+    --accent: 210 20% 92%;
+    --accent-foreground: 220 14% 10%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 216 20% 86%;
+    --input: 216 20% 86%;
+    --ring: 212 92% 43%;
+  }
+
   .dark {
     --background: 215 28% 7%; /* #0d1117 */
     --foreground: 210 18% 92%; /* #c9d1d9 */
@@ -57,33 +79,17 @@
     --input: 215 14% 21%;
     --ring: 212 100% 67%;
   }
-
-  .dimmed {
-    --background: 215 25% 11%; /* #1c2128 */
-    --foreground: 210 18% 90%;
-    --card: 215 20% 14%; /* #22272e */
-    --card-foreground: 210 18% 90%;
-    --popover: 215 20% 14%;
-    --popover-foreground: 210 18% 90%;
-    --primary: 212 100% 67%;
-    --primary-foreground: 215 28% 7%;
-    --secondary: 215 15% 19%;
-    --secondary-foreground: 210 18% 90%;
-    --muted: 215 15% 19%;
-    --muted-foreground: 215 14% 58%;
-    --accent: 215 15% 23%;
-    --accent-foreground: 210 18% 90%;
-    --destructive: 358 84% 65%;
-    --destructive-foreground: 0 85% 97%;
-    --border: 215 14% 24%;
-    --input: 215 14% 24%;
-    --ring: 212 100% 67%;
-  }
 }
 
 @layer base {
   * {
     @apply border-border;
+  }
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased selection:bg-[#58a6ff]/25 selection:text-foreground;

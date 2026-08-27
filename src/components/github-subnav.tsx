@@ -68,7 +68,7 @@ export function GitHubSubnav() {
   return (
     <div
       id="app-subnav-bar"
-      className="w-full bg-[#0d1117]/95 border-b border-[#30363d]/80 overflow-x-auto scrollbar-none sticky top-14 z-40 backdrop-blur-xl transition-all"
+      className="hidden md:block w-full bg-[#0d1117]/95 border-b border-[#30363d]/80 overflow-x-auto scrollbar-none sticky top-14 z-40 backdrop-blur-xl transition-all"
     >
       <div className="container max-w-7xl px-4 sm:px-6 flex items-center justify-between min-w-max">
         <nav className="flex space-x-1 py-1" aria-label="Tabs">

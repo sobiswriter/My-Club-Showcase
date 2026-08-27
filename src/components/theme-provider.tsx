@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-type Theme = "dark" | "light" | "dimmed"
+type Theme = "dark" | "light"
 
 type ThemeProviderProps = {
   children: React.ReactNode
@@ -17,7 +17,7 @@ type ThemeProviderState = {
 }
 
 const initialState: ThemeProviderState = {
-  theme: "light",
+  theme: "dark",
   setTheme: () => null,
 }
 
@@ -25,33 +25,35 @@ const ThemeProviderContext = React.createContext<ThemeProviderState>(initialStat
 
 export function ThemeProvider({
   children,
-  defaultTheme = "light",
-  storageKey = "ui-theme",
+  defaultTheme = "dark",
+  storageKey = "devclub-theme",
   attribute = "class",
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = React.useState<Theme>(
-    () => {
-        if (typeof window !== 'undefined') {
-            return (localStorage.getItem(storageKey) as Theme) || defaultTheme
-        }
-        return defaultTheme;
-    }
-  )
+  const [theme, setTheme] = React.useState<Theme>(defaultTheme)
+  const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
+    setMounted(true)
+    const saved = localStorage.getItem(storageKey) as Theme
+    if (saved === "dark" || saved === "light") {
+      setTheme(saved)
+    }
+  }, [storageKey])
+
+  React.useEffect(() => {
+    if (!mounted) return
     const root = window.document.documentElement
 
-    root.classList.remove("light", "dark", "dimmed")
+    root.classList.remove("light", "dark")
     root.classList.add(theme)
     localStorage.setItem(storageKey, theme)
-
-  }, [theme, storageKey])
+  }, [theme, storageKey, mounted])
 
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
-      setTheme(theme)
+    setTheme: (newTheme: Theme) => {
+      setTheme(newTheme)
     },
   }
 
